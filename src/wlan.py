@@ -20,8 +20,13 @@ async def connect_wifi():
         print(f"[WLAN]: scan[{wlan.scan()}]")
         print("[WLAN]: connecting")
         wlan.connect(credentials.wifi_ssid, credentials.wifi_password)
+        counter = 0
         while not wlan.isconnected():
             await asyncio.sleep(1)
+            counter += 1
+            if counter >= 10:
+                reset_wifi()
+                return
     print(f"[WLAN]: connected[{wlan.ifconfig()}]")
     rssi = wlan.status("rssi")
     if on_connection_changed_callback is not None:
@@ -33,6 +38,13 @@ def register_on_connection_changed_callback(func):
 
 def check_link():
     return wlan.isconnected()
+
+async def reset_wifi():
+    print("[WLAN]: Disabling Wi-Fi chip...")
+    wlan.active(False)
+    await asyncio.sleep(2)
+    print("[WLAN]: Re-enabling Wi-Fi chip...")
+    wlan.active(True)
 
 def request_reboot():
     print("[WLAN]: request reboot")
