@@ -8,7 +8,7 @@ class OLED_1inch3(framebuf.FrameBuffer):
         self.width = 128
         self.height = 64
         self.buffer = bytearray(self.height * self.width // 8)
-        self.rotate = 180 #only 0 and 180
+        self.rotate = 0 #only 0 and 180
 
         self.spi = spi
         self.dc = dc
