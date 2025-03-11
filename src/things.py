@@ -34,6 +34,9 @@ things = [
 
     # logic
     Thing("version", cb_in=version.req_version),
+    Thing("heating_logic", alias="HEATING_LOGIC", cb_in=phy_interface.on_data_received),
+    Thing("heating_on_timeout", alias="HEATING_ON_TIMEOUT", cb_in=phy_interface.on_data_received),
+    Thing("heating_off_timeout", alias="HEATING_OFF_TIMEOUT", cb_in=phy_interface.on_data_received),
     Thing("heartbeat"),
 ]
 
