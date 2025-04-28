@@ -37,6 +37,11 @@ things = [
     Thing("heating_logic", alias="HEATING_LOGIC", cb_in=phy_interface.on_data_received),
     Thing("heating_on_timeout", alias="HEATING_ON_TIMEOUT", cb_in=phy_interface.on_data_received),
     Thing("heating_off_timeout", alias="HEATING_OFF_TIMEOUT", cb_in=phy_interface.on_data_received),
+    Thing("cooling_logic", alias="COOLING_LOGIC", cb_in=phy_interface.on_data_received),
+    Thing("cooling_on_timeout", alias="COOLING_ON_TIMEOUT", cb_in=phy_interface.on_data_received),
+    Thing("cooling_off_timeout", alias="COOLING_OFF_TIMEOUT", cb_in=phy_interface.on_data_received),
+    Thing("auto_logic", alias="AUTO_LOGIC", cb_in=phy_interface.on_data_received),
+    Thing("auto_target_temperature", alias="AUTO_TARGET_TEMPERATURE", cb_in=phy_interface.on_data_received),
     Thing("heartbeat"),
 ]
 

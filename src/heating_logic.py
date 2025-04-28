@@ -1,14 +1,12 @@
 import asyncio
 import common_pins
 import leds
-import sensors
 from common import get_millis, millis_passed
 
 in_progress_status = False
 start_timestamp = 0
-heating_on_timeout_s = 10
-heating_off_timeout_s = 50
-current_state = ""
+heating_on_timeout_s = 3
+heating_off_timeout_s = 57
 timeout = 0
 
 def init():
@@ -43,15 +41,6 @@ def get_heating_on_timout():
 
 def get_heating_off_timout():
     return heating_off_timeout_s
-
-def get_temperature():
-    temperature = sensors.environment_sensors[0].get_temperature()
-    if temperature is not None:
-        if temperature >= 50.0:
-            return None
-        if temperature <= -5.0:
-            return None
-    return temperature
 
 async def loop():
     print("[HL]: loop")
