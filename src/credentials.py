@@ -4,8 +4,8 @@ password = 'MqttHG123'
 wifi_ssid = "Farma_AP"
 wifi_password = "Farma2024!"
 
-#server = '192.168.1.37'
-#username = ''
-#password = ''
-#wifi_ssid = "esschef2"
-#wifi_password = "babyaria123"w
+server = '192.168.1.42'
+username = ''
+password = ''
+wifi_ssid = "esschef2"
+wifi_password = "babyaria123"

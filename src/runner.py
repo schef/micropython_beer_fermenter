@@ -5,6 +5,8 @@ import leds
 import phy_interface
 import sensors
 import heating_logic
+import cooling_logic
+import auto_logic
 import wlan
 import mqtt
 import heartbeat
@@ -40,6 +42,8 @@ def init():
     phy_interface.init()
     sensors.init()
     heating_logic.init()
+    cooling_logic.init()
+    auto_logic.init()
     wlan.init()
     mqtt.init()
     things.init()
@@ -56,6 +60,8 @@ async def main():
     tasks.append(asyncio.create_task(sensors.realtime_sensors_action()))
     tasks.append(asyncio.create_task(sensors.environment_sensors_action()))
     tasks.append(asyncio.create_task(heating_logic.loop()))
+    tasks.append(asyncio.create_task(cooling_logic.loop()))
+    tasks.append(asyncio.create_task(auto_logic.loop()))
     tasks.append(asyncio.create_task(wlan.loop()))
     tasks.append(asyncio.create_task(mqtt.loop_async()))
     tasks.append(asyncio.create_task(heartbeat.action()))

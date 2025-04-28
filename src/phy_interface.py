@@ -74,8 +74,26 @@ def advertise_state(mode, state):
 
 def handle_request(thing):
     if thing.data == "request":
+        print(thing.path, Mode.AUTO_LOGIC)
         state = None
+        if thing.path == Mode.AUTO_LOGIC:
+            state = str(int(auto_logic.in_progress()))
+        elif thing.path == "auto_target_temperature":
+            state = str(auto_logic.target_temperature)
+        elif thing.path == Mode.HEATING_LOGIC:
+            state = str(int(heating_logic.in_progress()))
+        elif thing.path == "heating_on_timeout":
+            state = str(heating_logic.heating_on_timeout_s)
+        elif thing.path == "heating_off_timeout":
+            state = str(heating_logic.heating_off_timeout_s)
+        elif thing.path == Mode.COOLING_LOGIC:
+            state = str(int(cooling_logic.in_progress()))
+        elif thing.path == "cooling_on_timeout":
+            state = str(cooling_logic.cooling_on_timeout_s)
+        elif thing.path == "cooling_off_timeout":
+            state = str(cooling_logic.cooling_off_timeout_s)
         if state is not None:
+            print(state)
             thing.data = state
             thing.dirty_out = True
 
