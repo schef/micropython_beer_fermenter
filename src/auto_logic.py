@@ -61,6 +61,7 @@ async def loop():
             await asyncio.sleep(1)
             liquid_temperature = get_liquid_temperature()
             if liquid_temperature is None:
+                print("[AL]: temp is None, turning off")
                 if heating_logic.in_progress():
                     heating_logic.stop()
                 if cooling_logic.in_progress():

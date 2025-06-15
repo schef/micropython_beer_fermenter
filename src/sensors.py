@@ -15,6 +15,9 @@ alias = {
 ##### beer cooler #####
     "28a42f54000000df": "air", #narancasti
     "2859775200000045": "liquid",
+##### skrinja #####
+    "289c3854000000be": "air", #narancasti vezica
+    "280f3e50000000c4": "liquid",
 }
 
 class DsTempReader:

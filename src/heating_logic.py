@@ -53,7 +53,7 @@ async def loop():
                 heating.set_state(1)
             else:
                 if heating.get_state() == 1:
-                    if millis_passed(start_timestamp) >= heating_on_timeout_s * 1000:
+                    if millis_passed(start_timestamp) >= heating_on_timeout_s * 1000 and heating_off_timeout_s != 0:
                         start_timestamp = get_millis()
                         heating.set_state(0)
                 else:
